@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="страница о путешествиях по России" />
+    <meta name="keywords" content="путешествия, сервис, фото, mesto" />
+    <title>Mesto Russia</title>
+    <link rel="stylesheet" href="./pages/index.css" />
+  </head>
+
+  <body>
+    <div class="page">
+      <header class="header">
+        <div class="header__line"><img
+          class="header__logo"
+          src="./images/header-logo.svg"
+          alt="логотип Mesto"
+        />
+        </div>
+      </header>
+      <main class="content">
+        <section class="profile">
+          <img
+            class="profile__avatar-image"
+            src="./images/profile__avatar-image.jpg"
+            alt="фото Жак-Ив Кусто"
+          />
+          <div class="profile__info">
+            <h1 class="profile__title">Жак-Ив Кусто</h1>
+            <button class="profile__edit-button profile__edit-button_popup-opened">
+              <img
+                class="profile__edit-button-image"
+                src="./images/profile__edit-button.svg"
+                alt="кнопка Редактировать"
+              />
+            </button>
+            <p class="profile__subtitle">Исследователь океана</p>
+          </div>
+          <button class="profile__add-button">
+            <img
+              class="profile__add-button-image"
+              src="./images/profile__add-button.svg"
+              alt="кнопка Добавить"
+            />
+          </button>
+        </section>
+        <section
+          class="group"
+          aria-label="Карточки с фотографиями красивых мест"
+        >
+          <article class="group__element">
+            <img
+              class="group__image"
+              src="./images/group-karachaevsk.jpg"
+              alt="Карачаевск фото старого храма на фоне гор"
+            />
+            <div class="group__title-like">
+              <h2 class="group__title">Карачаево-Черкессия</h2>
+              <img
+                class="group__like-image"
+                src="./images/group__like-image.svg"
+                alt="кнопка Лайк"
+              />
+            </div>
+          </article>
+          <article class="group__element">
+            <img
+              class="group__image"
+              src="./images/group-elbrus.jpg"
+              alt="фото горы Эльбрус"
+            />
+            <div class="group__title-like">
+              <h2 class="group__title">Гора Эльбрус</h2>
+              <img
+                class="group__like-image"
+                src="./images/group__like-image.svg"
+                alt="кнопка Лайк"
+              />
+            </div>
+          </article>
+          <article class="group__element">
+            <img
+              class="group__image"
+              src="./images/group-dombaj.jpg"
+              alt="Домбай фото горы и лес"
+            />
+            <div class="group__title-like">
+              <h2 class="group__title">Домбай</h2>
+              <img
+                class="group__like-image"
+                src="./images/group__like-image.svg"
+                alt="кнопка Лайк"
+              />
+            </div>
+          </article>
+          <article class="group__element">
+            <img
+              class="group__image"
+              src="./images/group-kazan.jpg"
+              alt="фото кремля в Казани"
+            />
+            <div class="group__title-like">
+              <h2 class="group__title">Казань</h2>
+              <img
+                class="group__like-image"
+                src="./images/group__like-image.svg"
+                alt="кнопка Лайк"
+              />
+            </div>
+          </article>
+          <article class="group__element">
+            <img
+              class="group__image"
+              src="./images/group-ekaterinburg.jpg"
+              alt="фото Екатеринбурга с высоты"
+            />
+            <div class="group__title-like">
+              <h2 class="group__title">Екатеринбург</h2>
+              <img
+                class="group__like-image"
+                src="./images/group__like-image.svg"
+                alt="кнопка Лайк"
+              />
+            </div>
+          </article>
+          <article class="group__element">
+            <img
+              class="group__image"
+              src="./images/group-omsk.jpg"
+              alt="фото Омск ночная улица"
+            />
+            <div class="group__title-like">
+              <h2 class="group__title">Омск</h2>
+              <img
+                class="group__like-image"
+                src="./images/group__like-image.svg"
+                alt="кнопка Лайк"
+              />
+            </div>
+          </article>
+        </section>
+      </main>
+      <footer class="footer">
+        <p class="footer__copyright">© 2022. Sergey Ostapenko</p>
+      </footer>
+      <section class="popup">
+        <div class="popup__container">
+          <img class="popup__icon" src="./images/popup__close-Icon.svg" alt="иконка Закрыть"/>
+          <div class="popup__content">
+            <h2 class="popup__title">Редактировать профиль</h2>
+            <p class="popup__decription">Жак-Ив Кусто</p>
+            <p class="popup__decription">Исследователь океана</p>
+          </div>
+          <button class="popup__button">Сохранить</button>
+        </div>
+      </section>
+    </div>
+    <script type="text/javascript" src="./scripts/index.js"></script>
+  </body>
+</html>
