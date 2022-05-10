@@ -12,11 +12,12 @@
   <body>
     <div class="page">
       <header class="header">
-        <div class="header__line"><img
-          class="header__logo"
-          src="./images/header-logo.svg"
-          alt="логотип Mesto"
-        />
+        <div class="header__line">
+          <img
+            class="header__logo"
+            src="./images/header-logo.svg"
+            alt="логотип Mesto"
+          />
         </div>
       </header>
       <main class="content">
@@ -27,14 +28,18 @@
             alt="фото Жак-Ив Кусто"
           />
           <div class="profile__info">
-            <h1 class="profile__title">Жак-Ив Кусто</h1>
-            <button class="profile__edit-button profile__edit-button_popup-opened">
-              <img
-                class="profile__edit-button-image"
-                src="./images/profile__edit-button.svg"
-                alt="кнопка Редактировать"
-              />
-            </button>
+            <div class="profile__title-button">
+              <h1 class="profile__title">Жак-Ив Кусто</h1>
+              <button
+                class="profile__edit-button profile__edit-button_popup-opened"
+              >
+                <img
+                  class="profile__edit-button-image"
+                  src="./images/profile__edit-button.svg"
+                  alt="кнопка Редактировать"
+                />
+              </button>
+            </div>
             <p class="profile__subtitle">Исследователь океана</p>
           </div>
           <button class="profile__add-button">
@@ -146,11 +151,29 @@
       </footer>
       <section class="popup">
         <div class="popup__container">
-          <img class="popup__icon" src="./images/popup__close-Icon.svg" alt="иконка Закрыть"/>
+          <img
+            class="popup__icon"
+            src="./images/popup__close-Icon.svg"
+            alt="иконка Закрыть"
+          />
           <div class="popup__content">
             <h2 class="popup__title">Редактировать профиль</h2>
-            <p class="popup__decription">Жак-Ив Кусто</p>
-            <p class="popup__decription">Исследователь океана</p>
+            <form class="popup__form">
+              <label class="popup__label" for="имя">Имя</label>
+              <input
+                type="text"
+                class="popup__decription js-popup-name"
+                value="Жак-Ив Кусто"
+                id="имя"
+              />
+              <label class="popup__label" for="о себе">О себе</label>
+              <input
+                type="text"
+                class="popup__decription js-popup-prof"
+                value="Исследователь океана"
+                id="о себе"
+              />
+            </form>
           </div>
           <button class="popup__button">Сохранить</button>
         </div>
