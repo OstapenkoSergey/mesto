@@ -1,0 +1,17 @@
+.group {
+  margin: 0;
+  padding: 36px 19px 48px;
+  display: grid;
+  grid: 1fr / auto;
+  gap: 20px;
+}
+
+@media screen and (min-width: 1280px) {
+  .group {
+    margin: 0;
+    padding: 48px 0 67px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto;
+    gap: 20px 17px;
+  }
+}

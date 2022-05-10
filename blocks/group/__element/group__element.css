@@ -1,0 +1,9 @@
+.group__element {
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: #ffffff;
+}
+
+.group__element:first-child {
+  margin: 0;
+}

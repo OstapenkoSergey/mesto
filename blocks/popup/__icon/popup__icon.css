@@ -1,0 +1,22 @@
+.popup__icon {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: -41px;
+  right: 0;
+}
+
+.popup__icon:hover {
+  opacity: 0.6;
+  cursor: pointer;
+}
+
+@media screen and (min-width: 1280px) {
+  .popup__icon {
+    width: 32px;
+    height: 32px;
+    position: absolute;
+    top: -41px;
+    right: -32px;
+  }
+}
