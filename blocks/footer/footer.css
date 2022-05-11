@@ -3,6 +3,13 @@
   margin: 0 19px 36px;
 }
 
+@media screen and (min-width: 768px) {
+  .footer {
+    width: 100%;
+    max-width: 581px;
+  }
+}
+
 @media screen and (min-width: 1280px) {
   .footer {
     width: 100%;

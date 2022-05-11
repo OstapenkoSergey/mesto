@@ -12,14 +12,13 @@
   <body>
     <div class="page">
       <header class="header">
-        <div class="header__line">
-          <img
-            class="header__logo"
-            src="./images/header-logo.svg"
-            alt="логотип Mesto"
-          />
-        </div>
+        <img
+          class="header__logo"
+          src="./images/header-logo.svg"
+          alt="логотип Mesto"
+        />
       </header>
+      <hr class="underline" />
       <main class="content">
         <section class="profile">
           <img
@@ -30,25 +29,11 @@
           <div class="profile__info">
             <div class="profile__title-button">
               <h1 class="profile__title">Жак-Ив Кусто</h1>
-              <button
-                class="profile__edit-button profile__edit-button_popup-opened"
-              >
-                <img
-                  class="profile__edit-button-image"
-                  src="./images/profile__edit-button.svg"
-                  alt="кнопка Редактировать"
-                />
-              </button>
+              <button type="button" class="profile__edit-button"></button>
             </div>
             <p class="profile__subtitle">Исследователь океана</p>
           </div>
-          <button class="profile__add-button">
-            <img
-              class="profile__add-button-image"
-              src="./images/profile__add-button.svg"
-              alt="кнопка Добавить"
-            />
-          </button>
+          <button type="button" class="profile__add-button"></button>
         </section>
         <section
           class="group"
@@ -62,11 +47,7 @@
             />
             <div class="group__title-like">
               <h2 class="group__title">Карачаево-Черкессия</h2>
-              <img
-                class="group__like-image"
-                src="./images/group__like-image.svg"
-                alt="кнопка Лайк"
-              />
+              <button type="button" class="group__like-button"></button>
             </div>
           </article>
           <article class="group__element">
@@ -77,11 +58,7 @@
             />
             <div class="group__title-like">
               <h2 class="group__title">Гора Эльбрус</h2>
-              <img
-                class="group__like-image"
-                src="./images/group__like-image.svg"
-                alt="кнопка Лайк"
-              />
+              <button type="button" class="group__like-button"></button>
             </div>
           </article>
           <article class="group__element">
@@ -92,11 +69,7 @@
             />
             <div class="group__title-like">
               <h2 class="group__title">Домбай</h2>
-              <img
-                class="group__like-image"
-                src="./images/group__like-image.svg"
-                alt="кнопка Лайк"
-              />
+              <button type="button" class="group__like-button"></button>
             </div>
           </article>
           <article class="group__element">
@@ -107,11 +80,7 @@
             />
             <div class="group__title-like">
               <h2 class="group__title">Казань</h2>
-              <img
-                class="group__like-image"
-                src="./images/group__like-image.svg"
-                alt="кнопка Лайк"
-              />
+              <button type="button" class="group__like-button"></button>
             </div>
           </article>
           <article class="group__element">
@@ -122,11 +91,7 @@
             />
             <div class="group__title-like">
               <h2 class="group__title">Екатеринбург</h2>
-              <img
-                class="group__like-image"
-                src="./images/group__like-image.svg"
-                alt="кнопка Лайк"
-              />
+              <button type="button" class="group__like-button"></button>
             </div>
           </article>
           <article class="group__element">
@@ -137,11 +102,7 @@
             />
             <div class="group__title-like">
               <h2 class="group__title">Омск</h2>
-              <img
-                class="group__like-image"
-                src="./images/group__like-image.svg"
-                alt="кнопка Лайк"
-              />
+              <button type="button" class="group__like-button"></button>
             </div>
           </article>
         </section>
@@ -149,35 +110,33 @@
       <footer class="footer">
         <p class="footer__copyright">© 2022. Sergey Ostapenko</p>
       </footer>
-      <section class="popup">
+      <div class="popup">
         <div class="popup__container">
           <img
             class="popup__icon"
             src="./images/popup__close-Icon.svg"
             alt="иконка Закрыть"
           />
-          <div class="popup__content">
-            <h2 class="popup__title">Редактировать профиль</h2>
-            <form class="popup__form">
-              <label class="popup__label" for="имя">Имя</label>
-              <input
-                type="text"
-                class="popup__decription js-popup-name"
-                value="Жак-Ив Кусто"
-                id="имя"
-              />
-              <label class="popup__label" for="о__себе">О себе</label>
-              <input
-                type="text"
-                class="popup__decription js-popup-prof"
-                value="Исследователь океана"
-                id="о__себе"
-              />
-            </form>
-          </div>
-          <button class="popup__button">Сохранить</button>
+          <h2 class="popup__title">Редактировать профиль</h2>
+          <form class="popup__form" name="popupForm">
+            <label class="popup__label" for="имя">Имя</label>
+            <input
+              type="text"
+              class="popup__decription js-popup-name"
+              value="Жак-Ив Кусто"
+              id="имя"
+            />
+            <label class="popup__label" for="о__себе">О себе</label>
+            <input
+              type="text"
+              class="popup__decription js-popup-prof"
+              value="Исследователь океана"
+              id="о__себе"
+            />
+            <button type="submit" class="popup__button">Сохранить</button>
+          </form>
         </div>
-      </section>
+      </div>
     </div>
     <script src="./scripts/index.js"></script>
   </body>

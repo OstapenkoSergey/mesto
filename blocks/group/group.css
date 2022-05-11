@@ -6,6 +6,17 @@
   gap: 20px;
 }
 
+@media screen and (min-width: 768px) {
+  .group {
+    margin: 0;
+    padding: 48px 0 67px;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+    gap: 20px 17px;
+  }
+}
+
+
 @media screen and (min-width: 1280px) {
   .group {
     margin: 0;
