@@ -1,6 +1,7 @@
 .group__title-like {
-  padding: 25px 15px 31px 21px;
+  padding: 25px 30px 31px 21px;
+  box-sizing: border-box;
   display: flex;
   justify-content: space-between;
-  max-width: 246px;
+  max-width: 282px;
 }

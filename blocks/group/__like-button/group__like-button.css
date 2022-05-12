@@ -1,0 +1,17 @@
+.group__like-button {
+  margin: 0;
+  padding: 0;
+  width: 22px;
+  height: 19px;
+  background-image: url(../../../images/group__like-image.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  border: none;
+  background-color: white;
+  align-self: center;
+}
+
+.group__like-button:hover {
+  opacity: 0.5;
+  cursor: pointer;
+}
