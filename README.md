@@ -12,4 +12,4 @@
 
 **Опубликованная страница на GitHub Pages**
 
-* [Ссылка опубликованную страницу](https://ostapenkosergey.github.io/)
+* [Ссылка опубликованную страницу](https://ostapenkosergey.github.io/mesto/)

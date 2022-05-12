@@ -112,26 +112,20 @@
       </footer>
       <div class="popup">
         <div class="popup__container">
-          <img
-            class="popup__icon"
-            src="./images/popup__close-Icon.svg"
-            alt="иконка Закрыть"
-          />
+          <button type="button" class="popup__close-button"></button>
           <h2 class="popup__title">Редактировать профиль</h2>
           <form class="popup__form" name="popupForm">
-            <label class="popup__label" for="имя">Имя</label>
             <input
               type="text"
-              class="popup__decription js-popup-name"
+              class="popup__decription popup__decription_js-popup-name"
               value="Жак-Ив Кусто"
-              id="имя"
+              name="userName"
             />
-            <label class="popup__label" for="о__себе">О себе</label>
             <input
               type="text"
-              class="popup__decription js-popup-prof"
+              class="popup__decription popup__decription_js-popup-prof"
               value="Исследователь океана"
-              id="о__себе"
+              name="userJob"
             />
             <button type="submit" class="popup__button">Сохранить</button>
           </form>
