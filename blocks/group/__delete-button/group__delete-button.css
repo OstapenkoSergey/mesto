@@ -1,0 +1,19 @@
+.group__delete-button {
+  padding: 0;
+  width: 19px;
+  height: 19px;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-image: url(../../../images/profile__delete-button.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  border: none;
+  background-color: transparent;
+  align-self: center;
+}
+
+.group__delete-button:hover {
+  opacity: 0.6;
+  cursor: pointer;
+}

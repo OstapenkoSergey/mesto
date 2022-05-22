@@ -17,6 +17,7 @@
 @import url(../blocks/profile/__add-button/profile__add-button.css);
 
 @import url(../blocks/group/group.css);
+@import url(../blocks/group/__delete-button/group__delete-button.css);
 @import url(../blocks/group/__element/group__element.css);
 @import url(../blocks/group/__image/group__image.css);
 @import url(../blocks/group/__title-like/group__title-like.css);

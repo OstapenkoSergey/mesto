@@ -18,7 +18,6 @@
           alt="логотип Mesto"
         />
       </header>
-      <!-- <hr class="underline" /> -->
       <main class="content">
         <section class="profile">
           <img
@@ -37,23 +36,21 @@
         </section>
         <section
           class="group"
-          aria-label="Карточки с фотографиями красивых мест"
-        >
-          <article class="group__element">
+          aria-label="Карточки с фотографиями красивых мест">
+          <template class="template-element">
+            <article class="group__element">
+              <button type="button" class="group__delete-button"></button>
+              <img class="group__image"/>
+              <div class="group__title-like">
+                <h2 class="group__title"></h2>
+                <button type="button" class="group__like-button"></button>
+              </div>
+            </article>
+          </template>
+          <!-- <article class="group__element">
             <img
               class="group__image"
-              src="./images/group-karachaevsk.jpg"
-              alt="Карачаевск фото старого храма на фоне гор"
-            />
-            <div class="group__title-like">
-              <h2 class="group__title">Карачаево-Черкессия</h2>
-              <button type="button" class="group__like-button"></button>
-            </div>
-          </article>
-          <article class="group__element">
-            <img
-              class="group__image"
-              src="./images/group-elbrus.jpg"
+              src="./images/group-chelyabinsk.jpg"
               alt="фото горы Эльбрус"
             />
             <div class="group__title-like">
@@ -104,7 +101,7 @@
               <h2 class="group__title">Омск</h2>
               <button type="button" class="group__like-button"></button>
             </div>
-          </article>
+          </article> -->
         </section>
       </main>
       <footer class="footer">
