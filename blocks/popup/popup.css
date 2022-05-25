@@ -9,4 +9,10 @@
   justify-content: center;
   flex-direction: column;
   display: none;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0.4s, opacity 0.4s linear;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
