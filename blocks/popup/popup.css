@@ -5,10 +5,7 @@
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
-  align-items: center;
-  justify-content: center;
   flex-direction: column;
-  display: none;
   visibility: hidden;
   opacity: 0;
   transition: visibility 0.4s, opacity 0.4s linear;
