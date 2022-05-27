@@ -6,6 +6,7 @@
   top: -36px;
   right: 0;
   background-image: url(../../../images/popup__close-image.svg);
+  background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
   border: none;

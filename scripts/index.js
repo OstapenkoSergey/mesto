@@ -1,7 +1,7 @@
-const popup = document.querySelectorAll('.popup');
+const popups = document.querySelectorAll('.popup');
 const editButton = document.querySelector('.profile__edit-button');
 const popupProfile = document.querySelector('.popup-profile');
-const closePopupButton = document.querySelectorAll('.popup__close-button');
+const closePopupButtons = document.querySelectorAll('.popup__close-button');
 const profileForm = document.querySelector('.popup__form');
 const namePopup = profileForm.querySelector('.popup__decription_type_name');
 const profPopup = profileForm.querySelector('.popup__decription_type_job');
@@ -41,7 +41,7 @@ const newPlaceName = addForm.querySelector('.popup__decription_type_new-place');
 const newPlaceLink = addForm.querySelector('.popup__decription_type_place-link');
 const addButton = document.querySelector('.profile__add-button');
 
-editButton.addEventListener('click', () => {togglePopup(popupProfile)});
+editButton.addEventListener('click', () => {openProfilePopup(popupProfile)});
 profileForm.addEventListener('submit', handleProfileFormSubmit);
 addForm.addEventListener('submit', addItem);
 addButton.addEventListener('click', () => {openPopup(popupAddCard)});
@@ -50,7 +50,7 @@ function openPopup(popup) {
   popup.classList.add('popup_opened');
 };
 
-function togglePopup(data) {
+function openProfilePopup(data) {
   openPopup(data);
   namePopup.value = profileTitle.textContent;
   profPopup.value = profileSubtitle.textContent;
@@ -60,7 +60,7 @@ function closePopup(popup) {
   popup.classList.remove('popup_opened');
 };
 
-closePopupButton.forEach((button) => { 
+closePopupButtons.forEach((button) => { 
   const popup = button.closest('.popup');
   button.addEventListener('click', () => closePopup(popup));
 });
@@ -88,7 +88,7 @@ function createClone(data) {
   const cardElement = templateElement.cloneNode(true);
   const groupImage = cardElement.querySelector('.group__image');
   const groupTitle = cardElement.querySelector('.group__title');
-  const likeButton = cardElement.querySelector(".group__like-button")
+  cardElement.querySelector(".group__like-button")
     .addEventListener("click", function (event) {
       event.target.classList.toggle("group__like-button_active");
     });
@@ -114,7 +114,7 @@ function addItem(evt) {
   const name = newPlaceName.value;
   const link = newPlaceLink.value;
   prependCard({ name, link });
-  popupAddCard.classList.remove("popup_opened");
+  closePopup(popupAddCard);
   newPlaceName.value = null;
   newPlaceLink.value = null;
 }
@@ -127,10 +127,8 @@ const zoomDescription = document.querySelector('.popup__image-description');
 
 function zoomImage(event) {
   const groupImage = event.target;
-  const groupImageParent = groupImage.closest('.group__element');
-  const groupTitle = groupImageParent.querySelector('.group__title');
   zoomPicture.src = groupImage.src;
-  zoomDescription.textContent = groupTitle.textContent;
-  zoomPicture.setAttribute('alt', groupTitle.textContent);
+  zoomDescription.textContent = groupImage.alt;
+  zoomPicture.setAttribute('alt', groupImage.alt);
   openPopup(zoomPopup);
   } 
