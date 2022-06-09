@@ -58,6 +58,7 @@ function openProfilePopup(data) {
 
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
+
 };
 
 closePopupButtons.forEach((button) => { 
@@ -132,3 +133,20 @@ function zoomImage(event) {
   zoomPicture.setAttribute('alt', groupImage.alt);
   openPopup(zoomPopup);
   } 
+
+popups.forEach((popup) => {
+  popup.addEventListener('click', function (event) {
+  if (event.target === event.currentTarget) {
+    const openedPopup = document.querySelector('.popup_opened');  
+    closePopup(openedPopup);
+    }
+  });
+})
+
+document.addEventListener('keyup', (ev) => {
+  // console.log(ev.key);
+  if (ev.key === "Escape") {
+    const openedPopup = document.querySelector('.popup_opened');  
+    closePopup(openedPopup);
+  }
+});
