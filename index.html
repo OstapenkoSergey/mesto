@@ -60,7 +60,7 @@
             class="popup__close-button popup-profile__close-button"
           ></button>
           <h2 class="popup__title">Редактировать профиль</h2>
-          <form class="form popup__form" name="popupForm" novalidate>
+          <form class="popup__form" name="popupForm" novalidate>
             <input
               id="userName-input"
               type="text"
@@ -83,7 +83,13 @@
               maxlength="200"
             />
             <span class="userJob-input-error popup__input-error"> </span>
-            <button disabled type="submit" class="popup__button popup__button_invalid">Сохранить</button>
+            <button
+              disabled
+              type="submit"
+              class="popup__button popup__button_invalid"
+            >
+              Сохранить
+            </button>
           </form>
         </div>
       </div>
@@ -94,7 +100,11 @@
             class="popup__close-button popup-add-card__close-button"
           ></button>
           <h2 class="popup__title">Новое место</h2>
-          <form class="form popup__add-form" name="popupAddForm" novalidate>
+          <form
+            class="popup__form popup__add-form"
+            name="popupAddForm"
+            novalidate
+          >
             <input
               id="newPlace-input"
               type="text"
@@ -115,7 +125,11 @@
               required
             />
             <span class="placeLink-input-error popup__input-error"> </span>
-            <button disabled type="submit" class="popup__button popup__button_invalid popup__create-button">
+            <button
+              disabled
+              type="submit"
+              class="popup__button popup__button_invalid popup__create-button"
+            >
               Создать
             </button>
           </form>
