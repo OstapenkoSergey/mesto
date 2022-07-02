@@ -1,3 +1,6 @@
+import { Card } from "./Card.js";
+import { FormValidator } from "./FormValidator.js";
+
 const popups = document.querySelectorAll(".popup");
 const editButton = document.querySelector(".profile__edit-button");
 const popupProfile = document.querySelector(".popup-profile");
@@ -75,45 +78,16 @@ function handleProfileFormSubmit(evt) {
 }
 
 function renderInitialCards(data) {
+  const groupElements = document.querySelector(".group");
   data.forEach((item) => {
-    return renderCard(item);
+    const card = new Card(item, ".template-element");
+    groupElements.append(card.getElement());
   });
 }
 
-function deleteGroupItem(event) {
-  const buttonElement = event.target;
-  const groupCardElement = buttonElement.closest(".group__element");
-  groupCardElement.remove();
-}
-
-function createClone(data) {
-  const templateElement =
-    groupElemets.querySelector(".template-element").content;
-  const cardElement = templateElement.cloneNode(true);
-  const groupImage = cardElement.querySelector(".group__image");
-  const groupTitle = cardElement.querySelector(".group__title");
-  cardElement
-    .querySelector(".group__like-button")
-    .addEventListener("click", function (event) {
-      event.target.classList.toggle("group__like-button_active");
-    });
-  groupImage.src = data.link;
-  groupTitle.textContent = data.name;
-  groupImage.setAttribute("alt", data.name);
-  groupImage.addEventListener("click", zoomImage);
-  const deleteButtonElement = cardElement.querySelector(
-    ".group__delete-button"
-  );
-  deleteButtonElement.addEventListener("click", deleteGroupItem);
-  return cardElement;
-}
-
-function renderCard(data) {
-  groupElemets.append(createClone(data));
-}
-
 function prependCard(data) {
-  groupElemets.prepend(createClone(data));
+  const card = new Card(data, ".template-element");
+  groupElemets.prepend(card.getElement());
 }
 
 function addItem(evt) {
@@ -127,18 +101,6 @@ function addItem(evt) {
 }
 
 renderInitialCards(initialCards);
-
-const zoomPopup = document.querySelector(".popup_photo");
-const zoomPicture = document.querySelector(".popup__zoom-image");
-const zoomDescription = document.querySelector(".popup__image-description");
-
-function zoomImage(event) {
-  const groupImage = event.target;
-  zoomPicture.src = groupImage.src;
-  zoomDescription.textContent = groupImage.alt;
-  zoomPicture.setAttribute("alt", groupImage.alt);
-  openPopup(zoomPopup);
-}
 
 popups.forEach((popup) => {
   popup.addEventListener("mousedown", (evt) => {
@@ -157,3 +119,21 @@ function closeByEscape(evt) {
     closePopup(openedPopup);
   }
 }
+
+const formList = Array.from(document.querySelectorAll(".popup__form"));
+
+formList.forEach((formElement) => {
+  const formValidator = new FormValidator(
+    {
+      inputSelector: ".popup__decription",
+      submitButtonSelector: ".popup__button",
+      closePopupButtons: ".popup__close-button",
+      inactiveButtonClass: "popup__button_invalid",
+      activeButtonClass: "popup__button_valid",
+      inputErrorClass: "popup__description_type_error",
+      errorClass: "popup__input-error_active",
+    },
+    formElement
+  );
+  formValidator.enableValidation();
+});
