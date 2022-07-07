@@ -1,28 +1,31 @@
+import {openPopup} from './index.js';
+
 export class Card {
   _data;
   _selector;
   _cardElement;
+  
 
   constructor(data, selector) {
     this._data = data;
     this._selector = selector;
-    this._groupElements = document.querySelector(".group");
+    this._zoomPopup = document.querySelector(".popup_photo");
+    this._zoomPicture = document.querySelector(".popup__zoom-image");
+    this._zoomDescription = document.querySelector(".popup__image-description");
 
     this._createClone();
   }
 
   _createClone() {
-    const templateElement = this._groupElements.querySelector(
+    const templateElement = document.querySelector(
       this._selector
     ).content;
-    const cardElement = templateElement.cloneNode(true);
+    const cardElement = templateElement.querySelector('.group__element').cloneNode(true); 
     const groupImage = cardElement.querySelector(".group__image");
     const groupTitle = cardElement.querySelector(".group__title");
     cardElement
       .querySelector(".group__like-button")
-      .addEventListener("click", function (event) {
-        event.target.classList.toggle("group__like-button_active");
-      });
+      .addEventListener("click", this._toggleLike);
     groupImage.src = this._data.link;
     groupTitle.textContent = this._data.name;
     groupImage.setAttribute("alt", this._data.name);
@@ -34,40 +37,26 @@ export class Card {
     this._cardElement = cardElement;
   }
 
-  _deleteGroupItem(event) {
-    const buttonElement = event.target;
-    const groupCardElement = buttonElement.closest(".group__element");
-    groupCardElement.remove();
+  _toggleLike (event) {
+    event.target.classList.toggle("group__like-button_active");
   }
 
-  _zoomImage = (event) => {
-    const groupImage = event.target;
-    const zoomPopup = document.querySelector(".popup_photo");
-    const zoomPicture = document.querySelector(".popup__zoom-image");
-    const zoomDescription = document.querySelector(".popup__image-description");
+  _deleteGroupItem = () => {
+    this._cardElement.remove();
+    this._cardElement = null;
+  }
 
-    zoomPicture.src = groupImage.src;
-    zoomPicture.setAttribute("alt", groupImage.alt);
-    zoomDescription.textContent = groupImage.alt;
-    this._openPopup(zoomPopup);
+  _zoomImage = () => {
+    this._zoomPicture.src =  this._data.link;
+    this._zoomPicture.setAttribute("alt", this._data.name);
+    this._zoomDescription.textContent = this._data.name;
+    this._handleOpenImage(this._zoomPopup);
   };
 
-  _openPopup(popup) {
-    popup.classList.add("popup_opened");
-    document.addEventListener("keydown", this._closeByEscape);
+  _handleOpenImage() {
+    openPopup(this._zoomPopup);
   }
 
-  _closeByEscape(evt) {
-    if (evt.key === "Escape") {
-      const openedPopup = document.querySelector(".popup_opened");
-      this._closePopup(openedPopup);
-    }
-  }
-
-  _closePopup(popup) {
-    popup.classList.remove("popup_opened");
-    document.removeEventListener("keydown", this._closeByEscape);
-  }
 
   getElement() {
     return this._cardElement;
