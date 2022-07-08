@@ -1,26 +1,29 @@
-import {openPopup} from './index.js';
+import { openPopup } from "./index.js";
+
+const zoomPopup = document.querySelector(".popup_photo");
+const zoomPicture = document.querySelector(".popup__zoom-image");
+const zoomDescription = document.querySelector(".popup__image-description");
 
 export class Card {
   _data;
   _selector;
   _cardElement;
-  
 
   constructor(data, selector) {
     this._data = data;
     this._selector = selector;
-    this._zoomPopup = document.querySelector(".popup_photo");
-    this._zoomPicture = document.querySelector(".popup__zoom-image");
-    this._zoomDescription = document.querySelector(".popup__image-description");
+    this._zoomPopup = zoomPopup;
+    this._zoomPicture = zoomPicture;
+    this._zoomDescription = zoomDescription;
 
     this._createClone();
   }
 
   _createClone() {
-    const templateElement = document.querySelector(
-      this._selector
-    ).content;
-    const cardElement = templateElement.querySelector('.group__element').cloneNode(true); 
+    const templateElement = document.querySelector(this._selector).content;
+    const cardElement = templateElement
+      .querySelector(".group__element")
+      .cloneNode(true);
     const groupImage = cardElement.querySelector(".group__image");
     const groupTitle = cardElement.querySelector(".group__title");
     cardElement
@@ -37,17 +40,17 @@ export class Card {
     this._cardElement = cardElement;
   }
 
-  _toggleLike (event) {
+  _toggleLike(event) {
     event.target.classList.toggle("group__like-button_active");
   }
 
   _deleteGroupItem = () => {
     this._cardElement.remove();
     this._cardElement = null;
-  }
+  };
 
   _zoomImage = () => {
-    this._zoomPicture.src =  this._data.link;
+    this._zoomPicture.src = this._data.link;
     this._zoomPicture.setAttribute("alt", this._data.name);
     this._zoomDescription.textContent = this._data.name;
     this._handleOpenImage(this._zoomPopup);
@@ -56,7 +59,6 @@ export class Card {
   _handleOpenImage() {
     openPopup(this._zoomPopup);
   }
-
 
   getElement() {
     return this._cardElement;

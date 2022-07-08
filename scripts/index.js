@@ -67,17 +67,21 @@ editButton.addEventListener("click", () => {
 
 profileForm.addEventListener("submit", handleProfileFormSubmit);
 addForm.addEventListener("submit", addItem);
-addButton.addEventListener("click", () => {
-  openPopup(popupAddCard);
-});
+addButton.addEventListener("click", openAddFormPopup);
 
 export function openPopup(popup) {
   popup.classList.add("popup_opened");
   document.addEventListener("keydown", closeByEscape);
 }
 
+function openAddFormPopup() {
+  openPopup(popupAddCard);
+  addFormValidator.clearForm(popupAddCard);
+}
+
 function openProfilePopup(data) {
   openPopup(data);
+  profileFormValidator.clearForm(data);
   namePopup.value = profileTitle.textContent;
   profPopup.value = profileSubtitle.textContent;
 }
@@ -85,7 +89,6 @@ function openProfilePopup(data) {
 function closePopup(popup) {
   popup.classList.remove("popup_opened");
   document.removeEventListener("keydown", closeByEscape);
-  clearAllForms(popup);
 }
 
 function handleProfileFormSubmit(evt) {
@@ -95,25 +98,27 @@ function handleProfileFormSubmit(evt) {
   closePopup(popupProfile);
 }
 
-function getNewCard(item, order) {
+function getNewCard(item) {
   const card = new Card(item, ".template-element");
-  groupElements.append(card.getElement());
-  if (order === "append") {
-    groupElements.append(card.getElement());
-  } else {
-    groupElements.prepend(card.getElement());
-  }
   return card.getElement();
+}
+
+function getOrder(order, card) {
+  if (order === "append") {
+    groupElements.append(card);
+  } else {
+    groupElements.prepend(card);
+  }
 }
 
 function renderInitialCards(data) {
   data.forEach((item) => {
-    getNewCard(item, "append");
+    getOrder("append", getNewCard(item));
   });
 }
 
-function prependCard(data) {
-  getNewCard(data, "prepend");
+function prependCard(item) {
+  getOrder("prepend", getNewCard(item));
 }
 
 function addItem(evt) {
@@ -135,7 +140,6 @@ popups.forEach((popup) => {
       evt.target.classList.contains("popup__close-button")
     ) {
       closePopup(popup);
-      clearAllForms(popup);
     }
   });
 });
@@ -144,15 +148,5 @@ function closeByEscape(evt) {
   if (evt.key === "Escape") {
     const openedPopup = document.querySelector(".popup_opened");
     closePopup(openedPopup);
-    clearAllForms(openedPopup);
-  }
-}
-
-function clearAllForms(popup) {
-  if (popup.querySelector(".popup__form")) {
-    profileFormValidator.clearForm(popupProfile);
-  }
-  if (popup.querySelector(".popup__add-form")) {
-    addFormValidator.clearForm(popupAddCard);
   }
 }

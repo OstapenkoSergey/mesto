@@ -71,11 +71,11 @@ export class FormValidator {
     this._setEventListeners();
   };
 
-  clearForm(popup) {
+  clearForm() {
     if (!this._form) {
       return;
     }
-    this._deactivateButton();
+    // this._deactivateButton();
     this._inputList.forEach((inputElement, index) => {
       this._hideInputError(inputElement);
     });
