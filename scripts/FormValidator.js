@@ -72,10 +72,6 @@ export class FormValidator {
   };
 
   clearForm() {
-    if (!this._form) {
-      return;
-    }
-    // this._deactivateButton();
     this._inputList.forEach((inputElement, index) => {
       this._hideInputError(inputElement);
     });
