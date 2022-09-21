@@ -57,7 +57,7 @@ export class FormValidator {
     }
   };
 
-  _setEventListeners = () => {
+  _setInputListeners = () => {
     this._toggleButtonState();
     this._inputList.forEach((inputElement) => {
       inputElement.addEventListener("input", () => {
@@ -68,7 +68,8 @@ export class FormValidator {
   };
 
   enableValidation = () => {
-    this._setEventListeners();
+    this._setInputListeners();
+    this._buttonElement.setAttribute("disabled", true);
   };
 
   clearForm() {

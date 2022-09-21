@@ -1,21 +1,12 @@
-import { openPopup } from "./index.js";
-
-const zoomPopup = document.querySelector(".popup_photo");
-const zoomPicture = document.querySelector(".popup__zoom-image");
-const zoomDescription = document.querySelector(".popup__image-description");
-
 export class Card {
   _data;
   _selector;
   _cardElement;
 
-  constructor(data, selector) {
+  constructor(data, selector, handleCardClick) {
     this._data = data;
     this._selector = selector;
-    this._zoomPopup = zoomPopup;
-    this._zoomPicture = zoomPicture;
-    this._zoomDescription = zoomDescription;
-
+    this._zoomImage = handleCardClick;
     this._createClone();
   }
 
@@ -48,17 +39,6 @@ export class Card {
     this._cardElement.remove();
     this._cardElement = null;
   };
-
-  _zoomImage = () => {
-    this._zoomPicture.src = this._data.link;
-    this._zoomPicture.setAttribute("alt", this._data.name);
-    this._zoomDescription.textContent = this._data.name;
-    this._handleOpenImage(this._zoomPopup);
-  };
-
-  _handleOpenImage() {
-    openPopup(this._zoomPopup);
-  }
 
   getElement() {
     return this._cardElement;
