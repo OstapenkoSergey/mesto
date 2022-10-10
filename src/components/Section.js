@@ -7,9 +7,12 @@ export class Section {
 
   renderInitialCards() {
     this._initialArray.forEach((item) => {
-      const element = this._renderer(item);
-      this._container.append(element);
+      this._renderer(item);
     });
+  }
+
+  addInitialItems(element) {
+    this._container.append(element);
   }
 
   addItem(element) {

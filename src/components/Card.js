@@ -23,7 +23,9 @@ export class Card {
     groupImage.src = this._data.link;
     groupTitle.textContent = this._data.name;
     groupImage.setAttribute("alt", this._data.name);
-    groupImage.addEventListener("click", this._zoomImage);
+    groupImage.addEventListener("click", () => {
+      this._zoomImage(this._data.name, this._data.link);
+    });
     const deleteButtonElement = cardElement.querySelector(
       ".group__delete-button"
     );

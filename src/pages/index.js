@@ -1,4 +1,4 @@
-import './index.css';
+import "./index.css";
 import { Card } from "../components/Card.js";
 import { FormValidator } from "../components/FormValidator.js";
 import { PopupWithForm } from "../components/PopupWithForm.js";
@@ -6,7 +6,7 @@ import { PopupWithImage } from "../components/PopupWithImage.js";
 import { Section } from "../components/Section.js";
 import { UserInfo } from "../components/UserInfo.js";
 
-const editButton = document.querySelector(".profile__edit-button");
+const buttonEditProfile = document.querySelector(".profile__edit-button");
 const profileForm = document.querySelector(".popup__profile-form");
 const namePopup = profileForm.querySelector(".popup__decription_type_name");
 const profPopup = profileForm.querySelector(".popup__decription_type_job");
@@ -38,10 +38,14 @@ const initialCards = [
     link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg",
   },
 ];
-const addForm = document.querySelector(".popup__add-form");
-const newPlaceName = addForm.querySelector(".popup__decription_type_new-place");
-const newPlaceLink = addForm.querySelector(".popup__decription_type_place-link");
-const addButton = document.querySelector(".profile__add-button");
+const newCardForm = document.querySelector(".popup__add-form");
+const newPlaceName = newCardForm.querySelector(
+  ".popup__decription_type_new-place"
+);
+const newPlaceLink = newCardForm.querySelector(
+  ".popup__decription_type_place-link"
+);
+const buttonAddCard = document.querySelector(".profile__add-button");
 const validationConfig = {
   formSelector: ".popup__form",
   inputSelector: ".popup__decription",
@@ -53,31 +57,39 @@ const validationConfig = {
   errorClass: "popup__input-error_active",
 };
 const profileFormValidator = new FormValidator(validationConfig, profileForm);
-const addFormValidator = new FormValidator(validationConfig, addForm);
+const newCardFormValidator = new FormValidator(validationConfig, newCardForm);
 
 profileFormValidator.enableValidation();
-addFormValidator.enableValidation();
+newCardFormValidator.enableValidation();
+
+const imagePopup = new PopupWithImage(".popup_photo");
+imagePopup.setEventListeners();
 
 const renderNewCards = (item) => {
-  const imagePopup = new PopupWithImage(item, ".popup_photo");
-  imagePopup.setEventListeners();
   const card = new Card(item, ".template-element", imagePopup.openPopup);
   return card.getElement();
 };
-
-function openProfilePopup(data) {
-  data.openPopup();
-  namePopup.value = profileTitle.textContent;
-  profPopup.value = profileSubtitle.textContent;
-}
 
 const userInfo = new UserInfo({
   nameInputSelector: ".profile__title",
   descriptionInputSelector: ".profile__subtitle",
 });
 
+function openProfilePopup(data) {
+  const userData = userInfo.getUserInfo();
+  namePopup.value = userData.name;
+  profPopup.value = userData.description;
+  data.openPopup();
+}
+
 const cardList = new Section(
-  { items: initialCards, renderer: renderNewCards },
+  {
+    items: initialCards,
+    renderer: (card) => {
+      const cardElement = renderNewCards(card);
+      cardList.addInitialItems(cardElement);
+    },
+  },
   ".group"
 );
 
@@ -90,19 +102,19 @@ const profilePopupForm = new PopupWithForm(".popup-profile", (input) => {
 profilePopupForm.setEventListeners();
 
 const addPopupForm = new PopupWithForm(".popup-add-card", (input) => {
-  cardList.addItem(
-    renderNewCards({ name: input.newPlace, link: input.placeLink })
-  );
+  cardList.addItem(renderNewCards(input));
 });
 
 addPopupForm.setEventListeners();
 
-editButton.addEventListener("click", (evt) => {
+buttonEditProfile.addEventListener("click", (evt) => {
   evt.preventDefault();
   openProfilePopup(profilePopupForm);
+  profileFormValidator.deactivateButton();
 });
 
-addButton.addEventListener("click", (evt) => {
+buttonAddCard.addEventListener("click", (evt) => {
   evt.preventDefault();
   addPopupForm.openPopup();
+  newCardFormValidator.deactivateButton();
 });

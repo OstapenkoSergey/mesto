@@ -24,7 +24,7 @@ export class FormValidator {
     errorElement.textContent = "";
   };
 
-  _deactivateButton = () => {
+  deactivateButton = () => {
     this._buttonElement.classList.add(this._classNames.inactiveButtonClass);
     this._buttonElement.classList.remove(this._classNames.activeButtonClass);
     this._buttonElement.setAttribute("disabled", true);
@@ -51,7 +51,7 @@ export class FormValidator {
         return !inputElement.validity.valid;
       })
     ) {
-      this._deactivateButton();
+      this.deactivateButton();
     } else {
       this._activateButton();
     }

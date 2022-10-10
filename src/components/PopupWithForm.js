@@ -21,9 +21,6 @@ export class PopupWithForm extends Popup {
 
   openPopup() {
     super.openPopup();
-    this._buttonElement.classList.add("popup__button_invalid");
-    this._buttonElement.classList.remove("popup__button_valid");
-    this._buttonElement.setAttribute("disabled", true);
   }
 
   closePopup() {
